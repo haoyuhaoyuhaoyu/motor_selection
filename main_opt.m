@@ -8,6 +8,9 @@ casia_gait = load('gait/casia_gait_0.mat');
 %% param init
 transmission_range = 50;
 motor_type = 1;
+figure();
+for t=1:3
+    motor_type = t;
 switch motor_type
     case 1 %TQ 8526
         Kt = 0.127;
@@ -72,9 +75,16 @@ for belta = 1:1:transmission_range
     w_all = [w_all, w];
 end
 
-plot(w_all(1,:),E_tot_all(1,:))
+plot(w_all(1,:),E_tot_all(1,:),'LineWidth',2)
 
+hold on
 
+end
+legend('8526','7615','6013')
+xlabel('band width')
+ylabel('energy')
+
+xlim([0 1.2e+05])
 
 
 
